@@ -1,11 +1,11 @@
-# 🧠 DLSH — CUDA-Accelerated Locality Sensitive Hashing
+#  DLSH — CUDA-Accelerated Locality Sensitive Hashing
 
 **Authors:** [Zakaria El Kazdam](https://github.com/ZakariaElKazdam) & [Riham Faraj](https://github.com/farajriham)  
 **Date:** February 2025  
 
 ---
 
-## 📘 Overview
+##  Overview
 
 This project implements a **Locality-Sensitive Hashing (LSH)** system for **approximate nearest neighbor search** in high-dimensional spaces.
 
@@ -13,11 +13,11 @@ It includes:
 - A **sequential CPU version** to validate correctness and benchmark performance.
 - A **parallel CUDA version** leveraging GPU acceleration for massive speedups.
 
-> 💡 For detailed technical explanations, please refer to the [Project Report](./project_report.pdf).
+>  For detailed technical explanations, please refer to the [Project Report](./project_report.pdf).
 
 ---
 
-## 🚀 Motivation
+##  Motivation
 
 As datasets grow in size and dimensionality, sequential LSH becomes computationally expensive.  
 This project explores how **GPU parallelism** (via CUDA) can:
@@ -27,7 +27,7 @@ This project explores how **GPU parallelism** (via CUDA) can:
 
 ---
 
-## 🧩 Project Structure
+##  Project Structure
 
 | Folder/File | Description |
 |--------------|-------------|
@@ -41,7 +41,7 @@ This project explores how **GPU parallelism** (via CUDA) can:
 
 ---
 
-## 🧮 Sequential Implementation
+##  Sequential Implementation
 
 - Implements standard LSH algorithm for nearest neighbor search.  
 - Uses random hyperplanes to hash points into buckets.  
@@ -59,9 +59,9 @@ This project explores how **GPU parallelism** (via CUDA) can:
 
 ---
 
-## ⚙️ Parallel CUDA Implementation
+##  Parallel CUDA Implementation
 
-### 🔹 CUDA Kernels
+###  CUDA Kernels
 - **`generateLSHParams`**  
   Initializes random vectors and biases (`a`, `b`) for hash functions in parallel.
 - **`computeHashes`**  
@@ -69,24 +69,24 @@ This project explores how **GPU parallelism** (via CUDA) can:
 - **`hashingComputingCUDA`**  
   Performs dot products and hash computation inside each thread for one data point.
 
-### 🔹 Memory & Execution
+###  Memory & Execution
 - Custom memory management using raw pointers (`double*`) to GPU memory.  
 - Avoids unnecessary data transfers between CPU and GPU.  
 - Achieves significant speedups for large datasets.
 
 ---
 
-## 📊 Results & Observations
+##  Results & Observations
 
 - GPU implementation achieves **massive performance gains** over the sequential version.  
 - The final system is both **scalable** and **memory-efficient**.  
 - A structured pipeline from data loading → hashing → bucket assignment → retrieval.
 
-> 🧾 See *Section 3: Parallel Implementation* in the [Project Report](./project_report.pdf) for in-depth kernel explanations and figures.
+>  See *Section 3: Parallel Implementation* in the [Project Report](./project_report.pdf) for in-depth kernel explanations and figures.
 
 ---
 
-## 🛠️ Future Work
+##  Future Work
 
 - Parallelize the dot product computation (`hashingComputingCUDA`) using **warp-level reductions**.  
 - Integrate **CUDA memory debugging tools** (`cuda-memcheck`).  
@@ -95,20 +95,20 @@ This project explores how **GPU parallelism** (via CUDA) can:
 
 ---
 
-## 🧰 Build & Run
+##  Build & Run
 
-### 🖥️ Requirements
+###  Requirements
 - CUDA Toolkit ≥ 11.0  
 - C++17 compatible compiler (g++)  
 - NVIDIA GPU  
 
-### ⚙️ Compilation Example
+###  Compilation Example
 ```bash
 nvcc -o DLSH main.cu hashing.cu computeHashes.cu -std=c++17
 ./DLSH
 ```
 
-## 🧑‍💻 Authors
+##  Authors
 
 - **Zakaria El Kazdam** — GPU kernel design, CUDA integration, report writing  
 - **Riham Faraj** — Sequential implementation, data preprocessing, testing  
